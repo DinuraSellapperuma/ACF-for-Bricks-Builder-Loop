@@ -1,0 +1,21 @@
+/* use gallery field id from ACF or JetEngine */
+$gallery_images = get_field("my_gallery_name");
+/* in case you want to use ACF Option field */
+// $acf_images = get_field("my_gallery", "option");
+
+if(!empty($gallery_images)) {
+
+return [
+    'post_type'      => 'attachment',
+    'post_mime_type' => 'image',
+    'post_status'    => 'inherit',
+    'orderby'        => 'post__in',
+    'post__in'       => $gallery_images,
+    'posts_per_page' => -1,
+]; }
+
+else {
+
+  	return [];
+
+}
